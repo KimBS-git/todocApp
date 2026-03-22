@@ -1,4 +1,4 @@
-package com.example.ssdam
+package com.example.todoc
 
 import io.flutter.embedding.android.FlutterActivity
 
