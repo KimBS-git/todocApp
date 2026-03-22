@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todoc/home.dart';
-import 'package:todoc/my_pet.dart';
+import 'package:todoc/my_page.dart';
 import 'package:todoc/search.dart';
 
 class MainScreen extends StatefulWidget {
@@ -13,7 +13,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
 
-  final List<Widget> _screens = [Home(), Search(), MyPet()];
+  final List<Widget> _screens = [Home(), Search(), MyPage()];
 
   void _onTap(int index) {
     setState(() {
@@ -47,7 +47,7 @@ class _MainScreenState extends State<MainScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.pets, size: 30),
-            label: "마이펫",
+            label: "마이 페이지",
           ),
         ],
       ),

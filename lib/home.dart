@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_naver_map/flutter_naver_map.dart';
 import 'package:todoc/widget/book_card.dart';
 import 'package:todoc/widget/hospital_card.dart';
+import 'package:todoc/widget/service.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
-    bool hasReservation = false;
+    bool hasReservation = true;
 
     return Scaffold(
       appBar: AppBar(
@@ -21,8 +22,6 @@ class Home extends StatelessWidget {
         ),
         actions: [
           Icon(Icons.circle_notifications, color: Colors.amber, size: 30),
-          SizedBox(width: 10),
-          Icon(Icons.person, color: Color(0xff60a5fa), size: 30),
           SizedBox(width: 15),
         ],
         centerTitle: false,
@@ -33,7 +32,7 @@ class Home extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: 250,
+              height: 150,
               child: NaverMap(
                 options: NaverMapViewOptions(
                   initialCameraPosition: NCameraPosition(
@@ -47,7 +46,7 @@ class Home extends StatelessWidget {
               padding: const EdgeInsets.only(top: 20, bottom: 20),
               child: Container(
                 alignment: Alignment.center,
-                height: 50,
+                height: 45,
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
@@ -58,13 +57,21 @@ class Home extends StatelessWidget {
                 child: Text(
                   "지도에서 병원 찾기",
                   style: TextStyle(
-                    fontSize: 22,
+                    fontSize: 20,
                     color: Color(0xfff1f5f9),
                     fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 5),
+              child: Text(
+                "빠른 서비스",
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+            ),
+            Service(),
             hasReservation
                 ? BookCard(
                     bookHospitalName: "하이유 동물병원",
@@ -73,14 +80,14 @@ class Home extends StatelessWidget {
                   )
                 : EmptyBookCard(),
             Padding(
-              padding: const EdgeInsets.only(bottom: 10),
+              padding: const EdgeInsets.only(bottom: 5),
               child: Row(
                 children: [
-                  Icon(Icons.access_time, size: 25),
+                  Icon(Icons.access_time, size: 23),
                   SizedBox(width: 5),
                   Text(
                     "이전 예약 내역",
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                   Spacer(),
                   Text(
@@ -96,7 +103,11 @@ class Home extends StatelessWidget {
               ),
             ),
 
-            HospitalCard(hospitalName: "행복 동물병원", date: "2026.03.10"),
+            HospitalCard(
+              hospitalName: "행복 동물병원",
+              date: "2026.03.10",
+              detail: "정기검진",
+            ),
           ],
         ),
       ),

@@ -3,18 +3,20 @@ import 'package:flutter/material.dart';
 class HospitalCard extends StatelessWidget {
   final String hospitalName;
   final String date;
+  final String detail;
 
   const HospitalCard({
     super.key,
     required this.hospitalName,
     required this.date,
+    required this.detail,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
-      height: 120,
+      padding: EdgeInsets.all(5),
+      height: 100,
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
@@ -22,7 +24,7 @@ class HospitalCard extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Icon(Icons.local_hospital, size: 100),
+          Icon(Icons.local_hospital, size: 90),
           Expanded(
             child: Column(
               children: [
@@ -31,23 +33,16 @@ class HospitalCard extends StatelessWidget {
                   hospitalName,
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
-                Text(date, style: TextStyle(fontSize: 15)),
-                SizedBox(height: 5),
-                Container(
-                  alignment: Alignment.center,
-                  height: 30,
-                  width: 150,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: Color(0xff1d4ed8),
-                  ),
-                  child: Text(
-                    "다시 예약하기",
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xfff1f5f9),
-                    ),
+                Text(
+                  detail,
+                  style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  date,
+                  style: TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xff94a3b8),
                   ),
                 ),
               ],
