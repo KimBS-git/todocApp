@@ -8,6 +8,8 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool hasReservation = false;
+
     return Scaffold(
       appBar: AppBar(
         title: Row(
@@ -63,11 +65,13 @@ class Home extends StatelessWidget {
                 ),
               ),
             ),
-            BookCard(
-              bookHospitalName: "하이유 동물병원",
-              bookDate: "26.03.28 (목) 13:00",
-              bookDateTime: DateTime(2026, 3, 28),
-            ),
+            hasReservation
+                ? BookCard(
+                    bookHospitalName: "하이유 동물병원",
+                    bookDate: "26.03.28 (목) 13:00",
+                    bookDateTime: DateTime(2026, 3, 28),
+                  )
+                : EmptyBookCard(),
             Padding(
               padding: const EdgeInsets.only(bottom: 10),
               child: Row(

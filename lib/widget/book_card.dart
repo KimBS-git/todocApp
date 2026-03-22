@@ -117,3 +117,34 @@ class BookCard extends StatelessWidget {
     );
   }
 }
+
+class EmptyBookCard extends StatelessWidget {
+  const EmptyBookCard({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 10, bottom: 20),
+      child: Container(
+        padding: EdgeInsets.all(15),
+        height: 100,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          color: Colors.white,
+          border: Border.all(color: Color(0xffcbd5e1), width: 2), // 회색 테두리
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.calendar_month, color: Colors.blueGrey, size: 22),
+            SizedBox(width: 10),
+            Text(
+              "예약된 내역이 없습니다",
+              style: TextStyle(fontSize: 20, color: Colors.blueGrey),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
