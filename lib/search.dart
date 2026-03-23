@@ -43,154 +43,149 @@ class _SearchState extends State<Search> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "병원 검색 🔍",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 26),
-        ),
-        centerTitle: false,
-      ),
-      body: Column(
-        children: [
-          // 검색창
-          Padding(
-            padding: const EdgeInsets.all(12),
-            child: TextField(
-              decoration: InputDecoration(
-                hintText: "병원명, 지역...",
-                prefixIcon: Icon(Icons.search, color: Colors.grey),
-                filled: true, // ← 배경색 활성화
-                fillColor: Color(0xffe2e8f0), // ← 회색 배경
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide.none, // ← 테두리 제거
+      body: SafeArea(
+        child: Column(
+          children: [
+            // 검색창
+            Padding(
+              padding: const EdgeInsets.all(12),
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: "병원명, 지역...",
+                  prefixIcon: Icon(Icons.search, color: Colors.grey),
+                  filled: true, // ← 배경색 활성화
+                  fillColor: Color(0xffe2e8f0), // ← 회색 배경
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide.none, // ← 테두리 제거
+                  ),
                 ),
               ),
             ),
-          ),
 
-          // 필터 칩
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            padding: EdgeInsets.symmetric(horizontal: 12),
-            child: Row(
-              children: [
-                FilterChip(label: Text("전체"), onSelected: (v) {}),
-                SizedBox(width: 8),
-                FilterChip(label: Text("24시간"), onSelected: (v) {}),
-                SizedBox(width: 8),
-                FilterChip(label: Text("응급"), onSelected: (v) {}),
-                SizedBox(width: 8),
-                FilterChip(label: Text("주말 진료"), onSelected: (v) {}),
-                SizedBox(width: 8),
-                FilterChip(label: Text("영업중"), onSelected: (v) {}),
-              ],
-            ),
-          ),
-
-          SizedBox(height: 8),
-
-          // 병원 목록
-          Expanded(
-            child: ListView.builder(
+            // 필터 칩
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
               padding: EdgeInsets.symmetric(horizontal: 12),
-              itemCount: hospitals.length,
-              itemBuilder: (context, index) {
-                final hospital = hospitals[index];
-                return Card(
-                  margin: EdgeInsets.only(bottom: 10),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                    side: BorderSide(color: Color(0xffbfdbfe), width: 1),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.all(12),
-                    child: Row(
-                      children: [
-                        Container(
-                          width: 50,
-                          height: 50,
-                          decoration: BoxDecoration(
-                            color: Color(0xffeff6ff),
-                            borderRadius: BorderRadius.circular(10),
+              child: Row(
+                children: [
+                  FilterChip(label: Text("전체"), onSelected: (v) {}),
+                  SizedBox(width: 8),
+                  FilterChip(label: Text("24시간"), onSelected: (v) {}),
+                  SizedBox(width: 8),
+                  FilterChip(label: Text("응급"), onSelected: (v) {}),
+                  SizedBox(width: 8),
+                  FilterChip(label: Text("주말 진료"), onSelected: (v) {}),
+                  SizedBox(width: 8),
+                  FilterChip(label: Text("영업중"), onSelected: (v) {}),
+                ],
+              ),
+            ),
+
+            SizedBox(height: 8),
+
+            // 병원 목록
+            Expanded(
+              child: ListView.builder(
+                padding: EdgeInsets.symmetric(horizontal: 12),
+                itemCount: hospitals.length,
+                itemBuilder: (context, index) {
+                  final hospital = hospitals[index];
+                  return Card(
+                    margin: EdgeInsets.only(bottom: 10),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      side: BorderSide(color: Color(0xffbfdbfe), width: 1),
+                    ),
+                    child: Padding(
+                      padding: EdgeInsets.all(12),
+                      child: Row(
+                        children: [
+                          Container(
+                            width: 50,
+                            height: 50,
+                            decoration: BoxDecoration(
+                              color: Color(0xffeff6ff),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Icon(
+                              Icons.local_hospital,
+                              color: Color(0xff1d4ed8),
+                            ),
                           ),
-                          child: Icon(
-                            Icons.local_hospital,
-                            color: Color(0xff1d4ed8),
+                          SizedBox(width: 10),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  hospital["name"]!,
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                  hospital["location"]!,
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                                Text(
+                                  hospital["tag"]!,
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: Color(0xff1d4ed8),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                        SizedBox(width: 10),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               Text(
-                                hospital["name"]!,
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                "⭐ ${hospital["rating"]}",
+                                style: TextStyle(fontSize: 13),
                               ),
                               Text(
-                                hospital["location"]!,
+                                hospital["distance"]!,
                                 style: TextStyle(
                                   fontSize: 12,
                                   color: Colors.grey,
                                 ),
                               ),
-                              Text(
-                                hospital["tag"]!,
-                                style: TextStyle(
-                                  fontSize: 12,
+                              SizedBox(height: 6),
+                              Container(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 12,
+                                  vertical: 6,
+                                ),
+                                decoration: BoxDecoration(
                                   color: Color(0xff1d4ed8),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                child: Text(
+                                  "예약하기",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ),
                             ],
                           ),
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Text(
-                              "⭐ ${hospital["rating"]}",
-                              style: TextStyle(fontSize: 13),
-                            ),
-                            Text(
-                              hospital["distance"]!,
-                              style: TextStyle(
-                                fontSize: 12,
-                                color: Colors.grey,
-                              ),
-                            ),
-                            SizedBox(height: 6),
-                            Container(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: 12,
-                                vertical: 6,
-                              ),
-                              decoration: BoxDecoration(
-                                color: Color(0xff1d4ed8),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              child: Text(
-                                "예약하기",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:todoc/home.dart';
 import 'package:todoc/my_page.dart';
 import 'package:todoc/search.dart';
+import 'package:todoc/booking_history.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -13,7 +14,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
 
-  final List<Widget> _screens = [Home(), Search(), MyPage()];
+  final List<Widget> _screens = [Home(), Search(), BookingHistory(), MyPage()];
 
   void _onTap(int index) {
     setState(() {
@@ -24,7 +25,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _screens[_selectedIndex],
+      body: SafeArea(child: _screens[_selectedIndex]),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         elevation: 10,

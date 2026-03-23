@@ -24,7 +24,7 @@ class HospitalCard extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Icon(Icons.local_hospital, size: 90),
+          Icon(Icons.local_hospital, size: 90, color: Color(0xff1d4ed8)),
           Expanded(
             child: Column(
               children: [
