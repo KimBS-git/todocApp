@@ -111,6 +111,7 @@ class _SearchState extends State<Search> {
                             child: Icon(
                               Icons.local_hospital,
                               color: Color(0xff1d4ed8),
+                              size: 50,
                             ),
                           ),
                           SizedBox(width: 10),
@@ -121,21 +122,21 @@ class _SearchState extends State<Search> {
                                 Text(
                                   hospital["name"]!,
                                   style: TextStyle(
-                                    fontSize: 16,
+                                    fontSize: 18,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
                                 Text(
                                   hospital["location"]!,
                                   style: TextStyle(
-                                    fontSize: 12,
+                                    fontSize: 15,
                                     color: Colors.grey,
                                   ),
                                 ),
                                 Text(
                                   hospital["tag"]!,
                                   style: TextStyle(
-                                    fontSize: 12,
+                                    fontSize: 13,
                                     color: Color(0xff1d4ed8),
                                   ),
                                 ),
@@ -146,7 +147,7 @@ class _SearchState extends State<Search> {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               Text(
-                                "⭐ ${hospital["rating"]}",
+                                "${hospital["rating"]}",
                                 style: TextStyle(fontSize: 13),
                               ),
                               Text(
