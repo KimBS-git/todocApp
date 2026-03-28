@@ -116,44 +116,22 @@ class _BookingHistoryState extends State<BookingHistory>
     // MainScreen에 이미 Scaffold가 있기 때문에 여기서 또 쓰면 충돌납니다.
     return Column(
       children: [
-        // ── 상단 타이틀 영역 ──
-        Container(
-          color: Colors.white,
-          padding: EdgeInsets.only(
-            // 상태바(시계, 배터리 등) 높이를 자동으로 계산해서 여백을 줍니다.
-            top: MediaQuery.of(context).padding.top + 12,
-            left: 20,
-            right: 20,
-            bottom: 8,
-          ),
-          child: const Align(
-            alignment: Alignment.centerLeft,
-            child: Text(
-              '예약내역 🗓️',
-              style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),
-            ),
-          ),
-        ),
-
         // ── 탭 바 (예정된 예약 / 지난 예약) ──
         Container(
+          height: 60,
           color: Colors.white,
           child: TabBar(
             controller: _tabController,
             labelColor: const Color(0xFF3366FF), // 선택된 탭 글자 색
             unselectedLabelColor: Colors.grey, // 선택 안 된 탭 글자 색
             indicatorColor: const Color(0xFF3366FF), // 탭 아래 파란 밑줄
-            indicatorWeight: 2.5,
+            indicatorWeight: 8,
             labelStyle: const TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 15,
+              fontSize: 18,
             ),
             tabs: const [
-              Tab(text: '예정된 예약'),
+              Tab(text: "예정된 예약"),
               Tab(text: '지난 예약'),
             ],
           ),
@@ -190,7 +168,7 @@ class _BookingHistoryState extends State<BookingHistory>
       return const Center(
         child: Text(
           '예약 내역이 없습니다.',
-          style: TextStyle(color: Colors.grey, fontSize: 15),
+          style: TextStyle(color: Colors.grey, fontSize: 22),
         ),
       );
     }

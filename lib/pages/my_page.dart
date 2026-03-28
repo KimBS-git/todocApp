@@ -104,11 +104,26 @@ class _MyPageState extends State<MyPage> {
             child: const Text(
               '로그인',
               style: TextStyle(
-                fontSize: 16,
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
               ),
             ),
+          ),
+          SizedBox(height: 15),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "아이디/비밀번호 변경",
+                style: TextStyle(fontSize: 18, color: Colors.blueGrey),
+              ),
+              SizedBox(width: 30),
+              Text(
+                "회원탈퇴",
+                style: TextStyle(fontSize: 18, color: Colors.redAccent),
+              ),
+            ],
           ),
         ],
       ),

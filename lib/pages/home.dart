@@ -75,8 +75,8 @@ class Home extends StatelessWidget {
             hasReservation
                 ? BookCard(
                     bookHospitalName: "하이유 동물병원",
-                    bookDate: "26.03.28 (목) 13:00",
-                    bookDateTime: DateTime(2026, 3, 28),
+                    bookDate: "26.04.02 (목) 13:00",
+                    bookDateTime: DateTime(2026, 4, 3),
                   )
                 : EmptyBookCard(),
             Padding(
@@ -105,7 +105,7 @@ class Home extends StatelessWidget {
 
             HospitalCard(
               hospitalName: "행복 동물병원",
-              date: "2026.03.10",
+              date: "2025.04.12",
               detail: "정기검진",
             ),
           ],

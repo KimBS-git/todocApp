@@ -24,7 +24,7 @@ class BookCard extends StatelessWidget {
 
     if (diff == 0) return "D-Day";
     if (diff > 0) return "$diff";
-    return "${diff.abs()}";
+    return "+${diff.abs()}";
   }
 
   Color getDdayColor() {
@@ -103,7 +103,7 @@ class BookCard extends StatelessWidget {
                   Text(
                     getDday(),
                     style: TextStyle(
-                      fontSize: 25,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold,
                       color: getDdayColor(),
                     ),

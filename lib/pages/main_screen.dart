@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:todoc/home.dart';
-import 'package:todoc/my_page.dart';
-import 'package:todoc/search.dart';
+import 'package:todoc/pages/home.dart';
+import 'package:todoc/pages/my_page.dart';
+import 'package:todoc/pages/search.dart';
 import 'package:todoc/booking_history.dart';
 
 class MainScreen extends StatefulWidget {
