@@ -15,7 +15,7 @@ class Home extends StatelessWidget {
       appBar: AppBar(
         title: Row(
           children: [
-            Image.asset("assets/todak_logo.png", height: 30),
+            Image.asset("assets/todoc_logo.png", height: 30),
             SizedBox(width: 10),
             Text("토닥", style: TextStyle(fontWeight: FontWeight.bold)),
           ],
